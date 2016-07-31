@@ -9,14 +9,26 @@
 class Beacon {
     
     let uuid: String
-    let major: String
-    let minor: String
+    let major: Int
+    let minor: Int
 
-    init(uuid: String, major:String , minor: String) {
+    init(uuid: String, major:Int , minor: Int) {
         
         self.uuid = uuid
         self.major = major
         self.minor = minor
+    }
+    
+    func getUuid() -> String {
+        return self.uuid
+    }
+    
+    func getMajor() -> Int {
+        return self.major
+    }
+    
+    func getMinor() -> Int {
+        return self.minor
     }
     
 }

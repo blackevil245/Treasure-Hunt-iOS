@@ -11,12 +11,28 @@ class Adventure {
     let id: String
     let name: String
     let description: String
-    let items: [AnyObject]
+    let items: [Item]
     
-    init(id: String, name: String, description: String, item: [Item]) {
+    init(id: String, name: String, description: String, items: [Item]) {
         self.id = id
         self.name = name
         self.description = description
-        self.items = item
+        self.items = items
+    }
+    
+    func getId() -> String {
+        return self.id
+    }
+    
+    func getName() -> String {
+        return self.name
+    }
+    
+    func getDescription() -> String {
+        return self.description
+    }
+    
+    func getItems() -> [Item] {
+        return self.items
     }
 }

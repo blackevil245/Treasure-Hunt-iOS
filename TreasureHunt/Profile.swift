@@ -13,4 +13,8 @@ class Profile {
     init(username: String) {
         self.username = username
     }
+    
+    func acquireItem(itemId: String) -> Void {
+        
+    }
 }

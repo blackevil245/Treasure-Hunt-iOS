@@ -14,6 +14,9 @@
 		6A1B9A6C1CD24BA0001ED81E /* Beacon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A1B9A6B1CD24BA0001ED81E /* Beacon.swift */; };
 		6A1B9A6E1CD24D0A001ED81E /* Adventure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A1B9A6D1CD24D0A001ED81E /* Adventure.swift */; };
 		A084536C1D4EA3690015DDAA /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A084536B1D4EA3690015DDAA /* SwiftyJSON.framework */; };
+		A08453701D4EB4A80015DDAA /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = A084536F1D4EB4A80015DDAA /* Item.swift */; };
+		A08453731D4EBC230015DDAA /* Cache.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A08453711D4EBC230015DDAA /* Cache.xcdatamodeld */; };
+		A08453751D4EBC590015DDAA /* CoreDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A08453741D4EBC590015DDAA /* CoreDataController.swift */; };
 		A0B5C8A11D3D8DE1005C473A /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B5C8A01D3D8DE1005C473A /* NetworkService.swift */; };
 		A0B5C8A41D3D8E69005C473A /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = A0B5C8A31D3D8E69005C473A /* README.md */; };
 		A0B5C8A61D3D8EC1005C473A /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0B5C8A51D3D8EC1005C473A /* Alamofire.framework */; };
@@ -30,6 +33,9 @@
 		6A1B9A6B1CD24BA0001ED81E /* Beacon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Beacon.swift; sourceTree = "<group>"; };
 		6A1B9A6D1CD24D0A001ED81E /* Adventure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Adventure.swift; sourceTree = "<group>"; };
 		A084536B1D4EA3690015DDAA /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
+		A084536F1D4EB4A80015DDAA /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		A08453721D4EBC230015DDAA /* Cache.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Cache.xcdatamodel; sourceTree = "<group>"; };
+		A08453741D4EBC590015DDAA /* CoreDataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataController.swift; sourceTree = "<group>"; };
 		A0B5C8A01D3D8DE1005C473A /* NetworkService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		A0B5C8A31D3D8E69005C473A /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		A0B5C8A51D3D8EC1005C473A /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
@@ -73,6 +79,7 @@
 			children = (
 				6A1B9A601CD24AFC001ED81E /* Assets.xcassets */,
 				6A1B9A591CD24AFC001ED81E /* AppDelegate.swift */,
+				A08453711D4EBC230015DDAA /* Cache.xcdatamodeld */,
 				6A1B9A651CD24AFC001ED81E /* Info.plist */,
 				A0B5C8A21D3D8E03005C473A /* View */,
 				A0B5C89F1D3D8DC7005C473A /* Controllers */,
@@ -88,6 +95,7 @@
 				6A1B9A6D1CD24D0A001ED81E /* Adventure.swift */,
 				6A1B9A6B1CD24BA0001ED81E /* Beacon.swift */,
 				A0B5C8A91D3D930F005C473A /* Profile.swift */,
+				A084536F1D4EB4A80015DDAA /* Item.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -104,6 +112,7 @@
 			isa = PBXGroup;
 			children = (
 				6A1B9A5B1CD24AFC001ED81E /* ViewController.swift */,
+				A08453741D4EBC590015DDAA /* CoreDataController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -189,11 +198,14 @@
 			files = (
 				A0B5C8A41D3D8E69005C473A /* README.md in Sources */,
 				A0B5C8A11D3D8DE1005C473A /* NetworkService.swift in Sources */,
+				A08453751D4EBC590015DDAA /* CoreDataController.swift in Sources */,
 				6A1B9A6E1CD24D0A001ED81E /* Adventure.swift in Sources */,
 				A0B5C8AA1D3D930F005C473A /* Profile.swift in Sources */,
+				A08453701D4EB4A80015DDAA /* Item.swift in Sources */,
 				6A1B9A5C1CD24AFC001ED81E /* ViewController.swift in Sources */,
 				6A1B9A5A1CD24AFC001ED81E /* AppDelegate.swift in Sources */,
 				6A1B9A6C1CD24BA0001ED81E /* Beacon.swift in Sources */,
+				A08453731D4EBC230015DDAA /* Cache.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -348,6 +360,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		A08453711D4EBC230015DDAA /* Cache.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				A08453721D4EBC230015DDAA /* Cache.xcdatamodel */,
+			);
+			currentVersion = A08453721D4EBC230015DDAA /* Cache.xcdatamodel */;
+			path = Cache.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 6A1B9A4E1CD24AFC001ED81E /* Project object */;
 }

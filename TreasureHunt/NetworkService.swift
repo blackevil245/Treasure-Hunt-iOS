@@ -28,22 +28,23 @@ class NetworkService {
         }
     }
     
-    // MARK: Item
-    func getItemsList(completionHandler: (items: [Item]) -> Void) {
-        Alamofire.request(.GET, baseUrl + "/items").responseJSON { response in
+    // MARK: Beacon
+    func getBeaconsList(completionHandler: (beacons: [Beacon]) -> Void) {
+        Alamofire.request(.GET, baseUrl + "/beacons").responseJSON { response in
             if (response.result.error == nil) {
                 if let result = response.result.value {
                     
-                    var itemsList = [Item]()
+                    var beaconsList = [Beacon]()
                     
-                    if let items = result["items"] as? [AnyObject] {
-                        for item in items {
-                            if let uuid = item["uuid"] as? String, major = item["major"] as? String, minor = item["minor"] as? String {
-                                let newItem = Item(uuid: uuid, major: major, minor: minor)
-                                itemsList.append(newItem)
+                    if let beacons = result["beacons"] as? [AnyObject] {
+                        for beacon in beacons {
+                            if let uuid = beacon["uuid"] as? String, major = beacon["major"] as? Int, minor = beacon["minor"] as? Int {
+                                let newbeacon = Beacon(uuid: uuid, major: major, minor: minor)
+                                
+                                beaconsList.append(newbeacon)
                             }
                         }
-                        completionHandler(items: itemsList)
+                        completionHandler(beacons: beaconsList)
                     }
                 }
             }
@@ -61,7 +62,18 @@ class NetworkService {
                     if let adventures = result["adventures"] as? [AnyObject] {
                         for adventure in adventures {
                             if let id = adventure["id"] as? String, name = adventure["name"] as? String, description = adventure["description"] as? String, items = adventure["items"] as? [AnyObject] {
-                                let newAdventure = Adventure(id: id, name: name, description: description, item: items)
+                                
+                                var responseItems = [Item]()
+                                
+                                for item in items {
+                                    if let itemId = item["id"] as? String, name = item["name"] as? String, beaconIndex = item["beacon"] as? Int, description = item["desciption"] as? String, requiredBeaconIndex = item["required"] as? [Int] {
+                                        let newItem = Item(id: itemId, name: name, description: description, beaconIndex: beaconIndex, requiredBeaconIndex: requiredBeaconIndex)
+                                        responseItems.append(newItem)
+                                    }
+                                }
+                                
+                                let newAdventure = Adventure(id: id, name: name, description: description, items: responseItems)
+                                
                                 adventuresList.append(newAdventure)
                             }
                         }
@@ -72,4 +84,20 @@ class NetworkService {
             }
         }
     }
+    
+    // MARK: Item
+//    func annotateItemsList(itemsList: [Item]) -> [Item] {
+//        
+//        var beaconsList = [Beacon]()
+//        
+//        getBeaconsList { (beacons) in
+//            beaconsList = beacons
+//        }
+//        
+//        for (index, item) in itemsList.enumerate() {
+//            
+//        }
+//        
+//        return itemsList
+//    }
 }
