@@ -7,13 +7,16 @@
 //
 
 class Adventure {
-    let name: String
-    let desc: String
-    let item: [Item]
     
-    init(name: String, desc: String, item: [Item]) {
+    let id: String
+    let name: String
+    let description: String
+    let items: [AnyObject]
+    
+    init(id: String, name: String, description: String, item: [Item]) {
+        self.id = id
         self.name = name
-        self.desc = desc
-        self.item = item
+        self.description = description
+        self.items = item
     }
 }
