@@ -37,8 +37,4 @@ class Item {
     func getRequiredBeaconIndex() -> [Int] {
         return self.requiredBeaconIndex
     }
-    
-    func achieve() -> Void {
-        
-    }
 }
