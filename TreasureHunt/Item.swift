@@ -8,14 +8,14 @@
 
 class Item {
     
-    let id: String
-    let name: String
-    let description: String
-    let beaconIndex: Int
-    let requiredBeaconIndex: [Int]
+    let id: String?
+    let name: String?
+    let description: String?
+    let beaconIndex: Int?
+    let requiredBeaconIndex: [Int]?
     
     init(id: String, name: String, description:String , beaconIndex: Int, requiredBeaconIndex: [Int]) {
-        
+        self.id = id
         self.name = name
         self.description = description
         self.beaconIndex = beaconIndex
@@ -23,18 +23,18 @@ class Item {
     }
     
     func getName() -> String {
-        return self.name
+        return self.name ?? "Name not availabel"
     }
     
     func getDescription() -> String {
-        return self.description
+        return self.description ?? "Description not availabel"
     }
     
     func getBeaconIndex() -> Int {
-        return self.beaconIndex
+        return self.beaconIndex ?? 0
     }
     
     func getRequiredBeaconIndex() -> [Int] {
-        return self.requiredBeaconIndex
+        return self.requiredBeaconIndex ?? []
     }
 }

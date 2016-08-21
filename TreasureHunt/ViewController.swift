@@ -31,9 +31,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     func locationManager(manager: CLLocationManager, didRangeBeacons beacons: [CLBeacon], inRegion region: CLBeaconRegion) {
         self.knownBeacons = beacons.filter{$0.proximity != CLProximity.Unknown && $0.proximity.rawValue == 1}
-        if (self.knownBeacons[0].major == currentItem!.major && self.knownBeacons[0].minor == currentItem!.minor ) {
-            // Do stuff here
-        }
+        
+        
     }
 
     override func didReceiveMemoryWarning() {

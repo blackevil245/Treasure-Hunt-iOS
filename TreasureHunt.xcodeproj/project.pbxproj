@@ -16,12 +16,13 @@
 		A084536C1D4EA3690015DDAA /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A084536B1D4EA3690015DDAA /* SwiftyJSON.framework */; };
 		A08453701D4EB4A80015DDAA /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = A084536F1D4EB4A80015DDAA /* Item.swift */; };
 		A08453731D4EBC230015DDAA /* Cache.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A08453711D4EBC230015DDAA /* Cache.xcdatamodeld */; };
-		A08453751D4EBC590015DDAA /* CoreDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A08453741D4EBC590015DDAA /* CoreDataController.swift */; };
 		A0B5C8A11D3D8DE1005C473A /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B5C8A01D3D8DE1005C473A /* NetworkService.swift */; };
 		A0B5C8A41D3D8E69005C473A /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = A0B5C8A31D3D8E69005C473A /* README.md */; };
 		A0B5C8A61D3D8EC1005C473A /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0B5C8A51D3D8EC1005C473A /* Alamofire.framework */; };
 		A0B5C8AA1D3D930F005C473A /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B5C8A91D3D930F005C473A /* Profile.swift */; };
 		CE9431D255BCB57A1C3DD6D5 /* Pods_TreasureHunt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E6F6D97CE3D424770A99EE0 /* Pods_TreasureHunt.framework */; };
+		E46DC0B21D6A2336004E3C61 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46DC0B11D6A2336004E3C61 /* ListViewController.swift */; };
+		E46DC0B41D6A2803004E3C61 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46DC0B31D6A2803004E3C61 /* DetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,11 +40,12 @@
 		A084536B1D4EA3690015DDAA /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
 		A084536F1D4EB4A80015DDAA /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		A08453721D4EBC230015DDAA /* Cache.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Cache.xcdatamodel; sourceTree = "<group>"; };
-		A08453741D4EBC590015DDAA /* CoreDataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataController.swift; sourceTree = "<group>"; };
 		A0B5C8A01D3D8DE1005C473A /* NetworkService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		A0B5C8A31D3D8E69005C473A /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		A0B5C8A51D3D8EC1005C473A /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		A0B5C8A91D3D930F005C473A /* Profile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
+		E46DC0B11D6A2336004E3C61 /* ListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
+		E46DC0B31D6A2803004E3C61 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,8 +129,9 @@
 		A0B5C89F1D3D8DC7005C473A /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				E46DC0B11D6A2336004E3C61 /* ListViewController.swift */,
 				6A1B9A5B1CD24AFC001ED81E /* ViewController.swift */,
-				A08453741D4EBC590015DDAA /* CoreDataController.swift */,
+				E46DC0B31D6A2803004E3C61 /* DetailViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -271,9 +274,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E46DC0B41D6A2803004E3C61 /* DetailViewController.swift in Sources */,
 				A0B5C8A41D3D8E69005C473A /* README.md in Sources */,
+				E46DC0B21D6A2336004E3C61 /* ListViewController.swift in Sources */,
 				A0B5C8A11D3D8DE1005C473A /* NetworkService.swift in Sources */,
-				A08453751D4EBC590015DDAA /* CoreDataController.swift in Sources */,
 				6A1B9A6E1CD24D0A001ED81E /* Adventure.swift in Sources */,
 				A0B5C8AA1D3D930F005C473A /* Profile.swift in Sources */,
 				A08453701D4EB4A80015DDAA /* Item.swift in Sources */,
