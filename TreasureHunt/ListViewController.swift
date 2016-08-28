@@ -22,7 +22,11 @@ class ListViewController: UITableViewController {
         // Do any additional setup after loading the view.
     }
 
-    
+    override func viewWillAppear(animated: Bool) {
+        NetworkService.sharedInstance.getBeaconsList { (beacons) in
+            self.listBeacon = beacons                        
+        }
+    }
     
 }
 
@@ -39,6 +43,10 @@ extension ListViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("kListBeaconCell")! as UITableViewCell
         
+        let beacon = listBeacon[indexPath.row] as Beacon
+        
+        cell.detailTextLabel?.text = beacon.getUuid()
+        cell.textLabel?.text = "\(beacon.getMajor())- \(beacon.getMinor())"
         return cell
     }
     

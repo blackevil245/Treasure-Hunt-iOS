@@ -5,7 +5,7 @@ import SwiftyJSON
 
 class NetworkService {
     
-    private let baseUrl = "localhost/api"
+    private let baseUrl = "0.0.0.0:8080/api"
     
     static let sharedInstance = NetworkService()
     
@@ -47,6 +47,8 @@ class NetworkService {
                         completionHandler(beacons: beaconsList)
                     }
                 }
+            } else {
+                
             }
         }
     }
