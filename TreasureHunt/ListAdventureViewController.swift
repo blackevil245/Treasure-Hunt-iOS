@@ -1,5 +1,5 @@
 //
-//  ListViewController.swift
+//  ListAdventureViewController.swift
 //  TreasureHunt
 //
 //  Created by Hieu Nguyen on 21/08/16.
@@ -8,9 +8,9 @@
 
 import UIKit
 
-class ListViewController: UITableViewController {
+class ListAdventureViewController: UITableViewController {
     
-    var listBeacon: [Beacon] = [] {
+    var listAdventure: [Adventure] = [] {
         didSet {
             self.tableView.reloadData()
         }
@@ -23,30 +23,35 @@ class ListViewController: UITableViewController {
     }
 
     override func viewWillAppear(animated: Bool) {
-        NetworkService.sharedInstance.getBeaconsList { (beacons) in
-            self.listBeacon = beacons                        
-        }
+        NetworkService.sharedInstance.loadAdventures({ (adventures) in
+            self.listAdventure = adventures
+        })
     }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if let items = sender as? [Item], destVC = segue.destinationViewController as? ListItemTableViewController {
+            destVC.items = items
+        }
+    }
 }
 
 //MARK: UITableViewDataSource, UITableViewDelegate
-extension ListViewController {
+extension ListAdventureViewController {
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return listBeacon.count
+        return listAdventure.count
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("kListBeaconCell")! as UITableViewCell
         
-        let beacon = listBeacon[indexPath.row] as Beacon
+        let adventure = listAdventure[indexPath.row]
         
-        cell.detailTextLabel?.text = beacon.getUuid()
-        cell.textLabel?.text = "\(beacon.getMajor())- \(beacon.getMinor())"
+        cell.detailTextLabel?.text = adventure.getName()
+        cell.textLabel?.text = adventure.getDescription()
         return cell
     }
     
@@ -55,6 +60,8 @@ extension ListViewController {
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let items = listAdventure[indexPath.row].items
         
+        performSegueWithIdentifier("kShowListItemSegue", sender: items)
     }
 }

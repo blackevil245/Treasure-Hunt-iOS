@@ -14,13 +14,15 @@ class Item {
     let beaconIndex: Int?
     let requiredBeaconIndex: [Int]?
     
+    var isChecked: Bool = false
+    
     init(id: String, name: String, description:String , beaconIndex: Int, requiredBeaconIndex: [Int]) {
         self.id = id
         self.name = name
         self.description = description
         self.beaconIndex = beaconIndex
         self.requiredBeaconIndex = requiredBeaconIndex
-    }
+    }        
     
     func getName() -> String {
         return self.name ?? "Name not availabel"
