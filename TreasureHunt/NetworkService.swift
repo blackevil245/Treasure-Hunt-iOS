@@ -5,7 +5,7 @@ import SwiftyJSON
 
 class NetworkService {
     
-    private let baseUrl = "0.0.0.0:8080/api"
+    private let baseUrl = "http://0.0.0.0:8080/api"
     
     static let sharedInstance = NetworkService()
     
@@ -48,7 +48,7 @@ class NetworkService {
                     }
                 }
             } else {
-                
+                print(response.result.error)
             }
         }
     }
