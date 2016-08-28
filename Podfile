@@ -9,4 +9,5 @@ target 'TreasureHunt' do
   pod 'SwiftyJSON', '~> 2.3'
   pod 'Alamofire', '~> 3.4'
   pod 'ObjectMapper', '~> 1.4'
+  pod 'expanding-collection', '~> 0.3'
 end
