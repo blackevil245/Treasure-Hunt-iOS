@@ -9,7 +9,7 @@
 import UIKit
 
 class ListItemTableViewController: UITableViewController {
-    var items: [Item] = [] {
+    var advaneture: Adventure = Adventure(id: "NaN", name: "NaN", description: "NaN", items: []) {
         didSet {
             self.tableView.reloadData()
         }
@@ -46,13 +46,13 @@ extension ListItemTableViewController {
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return items.count
+        return advaneture.getItems().count
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(ItemTableViewCell.reuseIdentifier, forIndexPath: indexPath) as! ItemTableViewCell
         
-        cell.showItem(items[indexPath.row])
+        cell.showItem(advaneture.items[indexPath.row])
         
         return cell
     }

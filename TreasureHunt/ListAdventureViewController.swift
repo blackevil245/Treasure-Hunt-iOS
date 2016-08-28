@@ -29,8 +29,8 @@ class ListAdventureViewController: UITableViewController {
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if let items = sender as? [Item], destVC = segue.destinationViewController as? ListItemTableViewController {
-            destVC.items = items
+        if let advaneture = sender as? Adventure, destVC = segue.destinationViewController as? ListItemTableViewController {
+            destVC.advaneture = advaneture
         }
     }
 }
@@ -59,9 +59,7 @@ extension ListAdventureViewController {
         return 120
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let items = listAdventure[indexPath.row].items
-        
-        performSegueWithIdentifier("kShowListItemSegue", sender: items)
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {                
+        performSegueWithIdentifier("kShowListItemSegue", sender: listAdventure[indexPath.row])
     }
 }

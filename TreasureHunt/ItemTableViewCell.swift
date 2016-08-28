@@ -22,15 +22,15 @@ class ItemTableViewCell: UITableViewCell {
     @IBOutlet weak var beaconReqInxLabel: UILabel!
     
     func showItem(item: Item) {
-        idLabel.text = "ID: \(item.id)"
+        idLabel.text = "ID: \(item.id ?? "")"
         
-        nameLabel.text = "Name: \(item.name)"
+        nameLabel.text = "Name: \(item.name ?? "")"
         
-        descriptionLabel.text = "Description: \(item.description)"
+        descriptionLabel.text = "Description: \(item.description ?? "")"
         
-        beaconInxLabel.text = "Beacon index: \(item.beaconIndex)"
+        beaconInxLabel.text = "Beacon index: \(item.beaconIndex ?? 0)"
         
-        beaconReqInxLabel.text = "Beacon required: \(item.getRequiredBeaconIndex().description)"
+        beaconReqInxLabel.text = "Beacon required: \(item.beaconIndex?.description ?? "")"
     }
     
     override func awakeFromNib() {

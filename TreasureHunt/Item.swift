@@ -5,38 +5,28 @@
 //  Created by iosdev on 28.4.2016.
 //  Copyright © 2016 iosdev. All rights reserved.
 //
+import Foundation
+import ObjectMapper
 
-class Item {
+struct Item: Mappable {
     
-    let id: String?
-    let name: String?
-    let description: String?
-    let beaconIndex: Int?
-    let requiredBeaconIndex: [Int]?
+    var id: String?
+    var name: String?
+    var description: String?
+    var beaconIndex: Int?
+    var requiredBeaconIndex: [Int]?
     
     var isChecked: Bool = false
     
-    init(id: String, name: String, description:String , beaconIndex: Int, requiredBeaconIndex: [Int]) {
-        self.id = id
-        self.name = name
-        self.description = description
-        self.beaconIndex = beaconIndex
-        self.requiredBeaconIndex = requiredBeaconIndex
-    }        
-    
-    func getName() -> String {
-        return self.name ?? "Name not availabel"
+    init?(_ map: Map) {
+        
     }
     
-    func getDescription() -> String {
-        return self.description ?? "Description not availabel"
-    }
-    
-    func getBeaconIndex() -> Int {
-        return self.beaconIndex ?? 0
-    }
-    
-    func getRequiredBeaconIndex() -> [Int] {
-        return self.requiredBeaconIndex ?? []
+    mutating func mapping(map: Map) {
+        id <- map["id"]
+        name <- map["name"]
+        beaconIndex <- map["beacon"]
+        description <- map["description"]
+        requiredBeaconIndex <- map["required"]
     }
 }

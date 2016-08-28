@@ -2,6 +2,7 @@
 import Foundation
 import Alamofire
 import SwiftyJSON
+import ObjectMapper
 
 class NetworkService {
     
@@ -63,16 +64,13 @@ class NetworkService {
                     
                     if let adventures = result["adventures"] as? [AnyObject] {
                         for adventure in adventures {
-                            if let id = adventure["id"] as? String, name = adventure["name"] as? String, description = adventure["description"] as? String, items = adventure["items"] as? [AnyObject] {
+                            if let id = adventure["id"] as? String, name = adventure["name"] as? String, description = adventure["description"] as? String, items = adventure["items"] as? [[String:AnyObject]] {
                                 
                                 var responseItems = [Item]()
                                 
-                                for item in items {
-                                    if let itemId = item["id"] as? String, name = item["name"] as? String, beaconIndex = item["beacon"] as? Int, description = item["desciption"] as? String, requiredBeaconIndex = item["required"] as? [Int] {
-                                        let newItem = Item(id: itemId, name: name, description: description, beaconIndex: beaconIndex, requiredBeaconIndex: requiredBeaconIndex)
-                                        responseItems.append(newItem)
-                                    }
-                                }
+                                responseItems = items.flatMap({ (jsonObject: [String:AnyObject]) -> Item? in
+                                    return Mapper<Item>().map(jsonObject)
+                                })
                                 
                                 let newAdventure = Adventure(id: id, name: name, description: description, items: responseItems)
                                 
