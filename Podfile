@@ -8,4 +8,5 @@ target 'TreasureHunt' do
   # Pods for TreasureHunt
   pod 'SwiftyJSON', '~> 2.3'
   pod 'Alamofire', '~> 3.4'
+  pod 'ObjectMapper', '~> 1.4'
 end

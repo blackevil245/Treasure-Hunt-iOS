@@ -21,8 +21,9 @@
 		A0B5C8A61D3D8EC1005C473A /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0B5C8A51D3D8EC1005C473A /* Alamofire.framework */; };
 		A0B5C8AA1D3D930F005C473A /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B5C8A91D3D930F005C473A /* Profile.swift */; };
 		CE9431D255BCB57A1C3DD6D5 /* Pods_TreasureHunt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E6F6D97CE3D424770A99EE0 /* Pods_TreasureHunt.framework */; };
-		E46DC0B21D6A2336004E3C61 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46DC0B11D6A2336004E3C61 /* ListViewController.swift */; };
-		E46DC0B41D6A2803004E3C61 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46DC0B31D6A2803004E3C61 /* DetailViewController.swift */; };
+		E459292B1D730C4B0098AD8D /* ListItemTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E459292A1D730C4B0098AD8D /* ListItemTableViewController.swift */; };
+		E459292D1D730DEF0098AD8D /* ItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E459292C1D730DEF0098AD8D /* ItemTableViewCell.swift */; };
+		E46DC0B21D6A2336004E3C61 /* ListAdventureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46DC0B11D6A2336004E3C61 /* ListAdventureViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,8 +45,9 @@
 		A0B5C8A31D3D8E69005C473A /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		A0B5C8A51D3D8EC1005C473A /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		A0B5C8A91D3D930F005C473A /* Profile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
-		E46DC0B11D6A2336004E3C61 /* ListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
-		E46DC0B31D6A2803004E3C61 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		E459292A1D730C4B0098AD8D /* ListItemTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListItemTableViewController.swift; sourceTree = "<group>"; };
+		E459292C1D730DEF0098AD8D /* ItemTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemTableViewCell.swift; sourceTree = "<group>"; };
+		E46DC0B11D6A2336004E3C61 /* ListAdventureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListAdventureViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,9 +131,10 @@
 		A0B5C89F1D3D8DC7005C473A /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				E46DC0B11D6A2336004E3C61 /* ListViewController.swift */,
+				E46DC0B11D6A2336004E3C61 /* ListAdventureViewController.swift */,
 				6A1B9A5B1CD24AFC001ED81E /* ViewController.swift */,
-				E46DC0B31D6A2803004E3C61 /* DetailViewController.swift */,
+				E459292A1D730C4B0098AD8D /* ListItemTableViewController.swift */,
+				E459292C1D730DEF0098AD8D /* ItemTableViewCell.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -274,16 +277,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E46DC0B41D6A2803004E3C61 /* DetailViewController.swift in Sources */,
 				A0B5C8A41D3D8E69005C473A /* README.md in Sources */,
-				E46DC0B21D6A2336004E3C61 /* ListViewController.swift in Sources */,
+				E46DC0B21D6A2336004E3C61 /* ListAdventureViewController.swift in Sources */,
 				A0B5C8A11D3D8DE1005C473A /* NetworkService.swift in Sources */,
 				6A1B9A6E1CD24D0A001ED81E /* Adventure.swift in Sources */,
 				A0B5C8AA1D3D930F005C473A /* Profile.swift in Sources */,
+				E459292D1D730DEF0098AD8D /* ItemTableViewCell.swift in Sources */,
 				A08453701D4EB4A80015DDAA /* Item.swift in Sources */,
 				6A1B9A5C1CD24AFC001ED81E /* ViewController.swift in Sources */,
 				6A1B9A5A1CD24AFC001ED81E /* AppDelegate.swift in Sources */,
 				6A1B9A6C1CD24BA0001ED81E /* Beacon.swift in Sources */,
+				E459292B1D730C4B0098AD8D /* ListItemTableViewController.swift in Sources */,
 				A08453731D4EBC230015DDAA /* Cache.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
