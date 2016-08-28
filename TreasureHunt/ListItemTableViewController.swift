@@ -21,7 +21,8 @@ class ListItemTableViewController: UITableViewController {
         super.viewDidLoad()
         
         let swipeRightGesture = UISwipeGestureRecognizer(target: self, action: #selector(goBack))
-        swipeRightGesture.direction = .Right
+        swipeRightGesture.direction = .Down
+        
         
         self.view.addGestureRecognizer(swipeRightGesture)
     }
