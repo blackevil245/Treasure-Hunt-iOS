@@ -7,10 +7,25 @@
 //
 
 import UIKit
+import CoreLocation
 
 class ListItemTableViewController: UITableViewController {
+    var reqIndex: [Int] = []
+    
+    var knownBeacons: [CLBeacon] = [] {
+        didSet {
+            for clBeacon in knownBeacons {
+                let b = Beacon(clBeacon: clBeacon)
+                
+                BeaconManager.sharedInstance.addBeacon(b, requiredIndex: reqIndex)
+            }
+        }
+    }
+    
     var advaneture: Adventure = Adventure(id: "NaN", name: "NaN", description: "NaN", items: []) {
         didSet {
+            reqIndex = advaneture.items.first?.requiredBeaconIndex ?? []
+            
             self.tableView.reloadData()
         }
     }
@@ -21,7 +36,7 @@ class ListItemTableViewController: UITableViewController {
         super.viewDidLoad()
         
         let swipeRightGesture = UISwipeGestureRecognizer(target: self, action: #selector(goBack))
-        swipeRightGesture.direction = .Down
+        swipeRightGesture.direction = .Right
         
         
         self.view.addGestureRecognizer(swipeRightGesture)
@@ -56,5 +71,11 @@ extension ListItemTableViewController {
         cell.showItem(advaneture.items[indexPath.row])
         
         return cell
+    }
+}
+
+extension ListItemTableViewController: CLLocationManagerDelegate {
+    func locationManager(manager: CLLocationManager, didRangeBeacons beacons: [CLBeacon], inRegion region: CLBeaconRegion) {
+        self.knownBeacons = beacons.filter{$0.proximity != CLProximity.Unknown && $0.proximity.rawValue == 1}        
     }
 }

@@ -30,23 +30,20 @@ class NetworkService {
     }
     
     // MARK: Beacon
-    func getBeaconsList(completionHandler: (beacons: [Beacon]) -> Void) {
+    func getBeaconsList(completionHandler: [Beacon] -> Void, errorHandler: NSError -> Void) {
         Alamofire.request(.GET, baseUrl + "/beacons").responseJSON { response in
             if (response.result.error == nil) {
                 if let result = response.result.value {
-                    
-                    var beaconsList = [Beacon]()
-                    
-                    if let beacons = result["beacons"] as? [AnyObject] {
-                        for beacon in beacons {
-                            if let uuid = beacon["uuid"] as? String, major = beacon["major"] as? Int, minor = beacon["minor"] as? Int {
-                                let newbeacon = Beacon(uuid: uuid, major: major, minor: minor)
-                                
-                                beaconsList.append(newbeacon)
-                            }
-                        }
-                        completionHandler(beacons: beaconsList)
+                    guard let beacons = result["beacons"] as? [[String:AnyObject]] else {
+                        errorHandler(NSError(domain: "No beacons property", code: 10001, userInfo: nil))
+                        return
                     }
+                    
+                    let beaconList = beacons.flatMap({ (jsonObject: [String:AnyObject]) -> Beacon? in
+                        return Mapper<Beacon>().map(jsonObject)
+                    })
+                    
+                    completionHandler(beaconList)
                 }
             } else {
                 print(response.result.error)

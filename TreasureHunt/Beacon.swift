@@ -6,29 +6,40 @@
 //  Copyright © 2016 iosdev. All rights reserved.
 //
 
-class Beacon {
-    
-    let uuid: String
-    let major: Int
-    let minor: Int
+import Foundation
+import ObjectMapper
+import CoreLocation
 
-    init(uuid: String, major:Int , minor: Int) {
+class Beacon: Mappable {
+    var uuid: String?
+    var major: Int?
+    var minor: Int?
+    var index: Int?
+    
+    required init?(_ map: Map) {
         
-        self.uuid = uuid
-        self.major = major
-        self.minor = minor
     }
     
-    func getUuid() -> String {
-        return self.uuid
+    init(clBeacon: CLBeacon) {
+        uuid = clBeacon.proximityUUID.UUIDString
+        major = clBeacon.major.integerValue
+        minor = clBeacon.minor.integerValue
     }
     
-    func getMajor() -> Int {
-        return self.major
+    func mapping(map: Map) {
+        uuid <- map["uuid"]
+        major <- map["major"]
+        minor <- map["minor"]
+        index <- map["index"]
     }
-    
-    func getMinor() -> Int {
-        return self.minor
+}
+
+extension Beacon {
+    func equal(beacon: Beacon) -> Bool {
+        if self.uuid == beacon.uuid && self.major == beacon.major && self.minor == beacon.minor {
+            return true
+        }
+        
+        return false
     }
-    
 }
