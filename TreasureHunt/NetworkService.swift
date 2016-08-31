@@ -5,8 +5,7 @@ import SwiftyJSON
 import ObjectMapper
 
 class NetworkService {
-    
-    private let baseUrl = "http://0.0.0.0:8080/api"
+    private let baseUrl = "http://146.185.138.86:8080/api"
     
     static let sharedInstance = NetworkService()
     

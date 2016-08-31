@@ -9,19 +9,24 @@
 import UIKit
 import CoreLocation
 
-class ViewController: UIViewController, CLLocationManagerDelegate {
+class ViewController: UIViewController {
     let locationManager = CLLocationManager()
-    let region = CLBeaconRegion(proximityUUID: NSUUID(UUIDString: "B9407F30-F5F8-466E-AFF9-25556B57FE6D")!, identifier: "iBKS10500260163")
     
     var knownBeacons: [CLBeacon] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if let uuid = NSUUID(UUIDString: "B9407F30-F5F8-466E-AFF9-25556B57FE6D") {
+            let region = CLBeaconRegion(proximityUUID: uuid, major: 1, minor: 1, identifier: "dmtx")
+            locationManager.delegate = self
+            locationManager.startRangingBeaconsInRegion(region)
+        }
+        
         NetworkService.sharedInstance.getBeaconsList({ (beacons) in
             BeaconManager.sharedInstance.sourceBeacon = beacons
-            }) { (error) in
-                print("Error \(error.localizedDescription)")
+        }) { (error) in
+            print("Error \(error.localizedDescription)")
         }
         
         // Ranging beacon
@@ -29,8 +34,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         if (CLLocationManager.authorizationStatus() != CLAuthorizationStatus.AuthorizedWhenInUse) {
             locationManager.requestWhenInUseAuthorization()
         }
-        locationManager.delegate = self
-        locationManager.startRangingBeaconsInRegion(region)
+
     }
         
 
@@ -39,14 +43,13 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    func locationManager(manager: CLLocationManager, didRangeBeacons beacons: [CLBeacon], inRegion region: CLBeaconRegion) {
-        self.knownBeacons = beacons.filter{$0.proximity != CLProximity.Unknown && $0.proximity.rawValue == 1}
-    }
 }
 
-//extension ViewController: CLLocationManagerDelegate {
-//    func locationManager(manager: CLLocationManager, didRangeBeacons beacons: [CLBeacon], inRegion region: CLBeaconRegion) {
-//        self.knownBeacons = beacons.filter{$0.proximity != CLProximity.Unknown && $0.proximity.rawValue == 1}
-//    }
-//    
-//}
+extension ViewController: CLLocationManagerDelegate {
+    func locationManager(manager: CLLocationManager, didRangeBeacons beacons: [CLBeacon], inRegion region: CLBeaconRegion) {
+        print(beacons.description)
+        print(region)
+        self.knownBeacons = beacons.filter{$0.proximity != CLProximity.Unknown && $0.proximity.rawValue == 1}
+    }
+    
+}
