@@ -2,4 +2,54 @@
 <Bucket
    type = "0"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TreasureHunt/ViewController.swift"
+            timestampString = "494353552.757661"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "43"
+            endingLineNumber = "43"
+            landmarkName = "locationManager(_:didRangeBeacons:inRegion:)"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "TreasureHunt.ViewController.locationManager (__ObjC.CLLocationManager, didRangeBeacons : Swift.Array&lt;__ObjC.CLBeacon&gt;, inRegion : __ObjC.CLBeaconRegion) -&gt; ()"
+                  moduleName = "TreasureHunt"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hieunguyen/Desktop/Treasure-Hunt-iOS/TreasureHunt/ViewController.swift"
+                  timestampString = "494353552.807278"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "43"
+                  endingLineNumber = "43"
+                  offsetFromSymbolStart = "60">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "TreasureHunt.ViewController.(locationManager (__ObjC.CLLocationManager, didRangeBeacons : Swift.Array&lt;__ObjC.CLBeacon&gt;, inRegion : __ObjC.CLBeaconRegion) -&gt; ()).(closure #1)"
+                  moduleName = "TreasureHunt"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hieunguyen/Desktop/Treasure-Hunt-iOS/TreasureHunt/ViewController.swift"
+                  timestampString = "494353552.807417"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "43"
+                  endingLineNumber = "43"
+                  offsetFromSymbolStart = "24">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

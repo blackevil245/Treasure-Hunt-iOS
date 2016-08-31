@@ -74,8 +74,3 @@ extension ListItemTableViewController {
     }
 }
 
-extension ListItemTableViewController: CLLocationManagerDelegate {
-    func locationManager(manager: CLLocationManager, didRangeBeacons beacons: [CLBeacon], inRegion region: CLBeaconRegion) {
-        self.knownBeacons = beacons.filter{$0.proximity != CLProximity.Unknown && $0.proximity.rawValue == 1}        
-    }
-}
