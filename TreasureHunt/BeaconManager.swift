@@ -26,11 +26,11 @@ class BeaconManager {
         }
     }
     
-    func addBeacon(beacon: Beacon, requiredIndex: [Int]) {
+    func addBeacon(beacon: Beacon, requiredIndex: [Int]) -> Bool {
         //Prevent duplicate beacon
         for b in beacons {
             if b.equal(beacon) {
-                return
+                return false
             }
         }
         
@@ -38,8 +38,12 @@ class BeaconManager {
         for b in sourceBeacon {
             if b.equal(beacon) && availableIndex(requiredIndex) {
                 beacons.append(b)
+                
+                return true
             }
         }
+        
+        return false
     }
     
     private func availableIndex(reqIndex: [Int]) -> Bool {

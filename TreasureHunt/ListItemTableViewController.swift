@@ -12,12 +12,16 @@ import CoreLocation
 class ListItemTableViewController: UITableViewController {
     var reqIndex: [Int] = []
     
+    let locationManager = CLLocationManager()
+    
     var knownBeacons: [CLBeacon] = [] {
         didSet {
             for clBeacon in knownBeacons {
                 let b = Beacon(clBeacon: clBeacon)
                 
-                BeaconManager.sharedInstance.addBeacon(b, requiredIndex: reqIndex)
+                if BeaconManager.sharedInstance.addBeacon(b, requiredIndex: reqIndex) {
+                    tableView.reloadData()
+                }
             }
         }
     }
@@ -34,6 +38,12 @@ class ListItemTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if let uuid = NSUUID(UUIDString: "B9407F30-F5F8-466E-AFF9-25556B57FE6D") {
+            let region = CLBeaconRegion(proximityUUID: uuid, major: 1, minor: 1, identifier: "dmtx")
+            locationManager.delegate = self
+            locationManager.startRangingBeaconsInRegion(region)
+        }
         
         let swipeRightGesture = UISwipeGestureRecognizer(target: self, action: #selector(goBack))
         swipeRightGesture.direction = .Right
@@ -68,9 +78,26 @@ extension ListItemTableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(ItemTableViewCell.reuseIdentifier, forIndexPath: indexPath) as! ItemTableViewCell
         
-        cell.showItem(advaneture.items[indexPath.row])
+        let item = advaneture.items[indexPath.row]
+        
+        cell.showItem(item)
+        
+        cell.backgroundColor = UIColor.whiteColor()
+        
+        for b in BeaconManager.sharedInstance.beacons {
+            if let bIndex = b.index, iIndex = item.beaconIndex where bIndex == iIndex {
+                cell.backgroundColor = UIColor.greenColor()
+            }
+        }
         
         return cell
     }
 }
 
+extension ListItemTableViewController: CLLocationManagerDelegate {
+    func locationManager(manager: CLLocationManager, didRangeBeacons beacons: [CLBeacon], inRegion region: CLBeaconRegion) {
+        print(beacons.description)
+        self.knownBeacons = beacons.filter{ $0.proximity != CLProximity.Unknown }
+    }
+    
+}

@@ -15,15 +15,15 @@ class Beacon: Mappable {
     var major: Int?
     var minor: Int?
     var index: Int?
+    var accurary: Double?
     
-    required init?(_ map: Map) {
-        
-    }
+    required init?(_ map: Map) { }
     
     init(clBeacon: CLBeacon) {
         uuid = clBeacon.proximityUUID.UUIDString
         major = clBeacon.major.integerValue
         minor = clBeacon.minor.integerValue
+        accurary = clBeacon.accuracy
     }
     
     func mapping(map: Map) {
