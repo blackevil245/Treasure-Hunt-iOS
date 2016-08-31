@@ -50,8 +50,8 @@ extension ListAdventureViewController {
         
         let adventure = listAdventure[indexPath.row]
         
-        cell.detailTextLabel?.text = adventure.getName()
-        cell.textLabel?.text = adventure.getDescription()
+        cell.detailTextLabel?.text = adventure.getDescription()
+        cell.textLabel?.text = adventure.getName()
         return cell
     }
     
